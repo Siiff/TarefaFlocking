@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class FlockManager : MonoBehaviour
 {
+    //Variaveis e Headers//
     public GameObject fishPrefab;
     public int numFish = 20;
     public GameObject[] allFish; 
-    public Vector3 swinLimits = new Vector3(5, 5, 5);
+    public Vector3 swinLimits = new Vector3(5, 5, 5); //Variavel das Boundaries//
     public Vector3 goalPos;
     [Header("Configurações do Cardume")] 
     [Range(0.0f, 5.0f)] 
@@ -21,7 +22,9 @@ public class FlockManager : MonoBehaviour
 
     void Start() 
     { 
-        allFish = new GameObject[numFish]; 
+        //Colocando os peixes no array//
+        allFish = new GameObject[numFish];
+        //Para cada peixe no array, Instancia um peixe dentro dos limites do grupo//
         for (int i = 0; i < numFish; i++) 
         { 
             Vector3 pos = this.transform.position + new Vector3(Random.Range(-swinLimits.x, swinLimits.x), Random.Range(-swinLimits.y, swinLimits.y), Random.Range(-swinLimits.z, swinLimits.z)); 
@@ -32,6 +35,7 @@ public class FlockManager : MonoBehaviour
     }
     void Update() 
     {
+        //criando a posição alvo do grupo dentro das cordenadas estabelecidas//
         goalPos= this.transform.position;
         if(Random.Range(0,100)<10)
         {
